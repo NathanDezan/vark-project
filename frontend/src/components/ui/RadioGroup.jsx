@@ -1,0 +1,38 @@
+import { cn } from "../../lib/utils.js";
+
+export function RadioGroup({ name, value, onChange, options, className }) {
+  return (
+    <div role="radiogroup" className={cn("space-y-2", className)}>
+      {options.map((opt) => {
+        const checked = value === opt.value;
+        const id = `${name}-${opt.value}`;
+        return (
+          <label
+            key={opt.value}
+            htmlFor={id}
+            className={cn(
+              "flex cursor-pointer items-start gap-3 rounded-xl border bg-white p-4 text-sm transition",
+              checked
+                ? "border-indigo-500 ring-2 ring-indigo-100"
+                : "border-slate-200 hover:border-slate-300 hover:bg-slate-50",
+            )}
+          >
+            <input
+              id={id}
+              type="radio"
+              name={name}
+              value={opt.value}
+              checked={checked}
+              onChange={() => onChange(opt.value)}
+              className="mt-0.5 h-4 w-4 cursor-pointer border-slate-300 text-indigo-600 focus:ring-indigo-500"
+            />
+            <div className="flex-1">
+              <div className="font-medium text-slate-900">{opt.text}</div>
+              {opt.description && <div className="mt-0.5 text-xs text-slate-500">{opt.description}</div>}
+            </div>
+          </label>
+        );
+      })}
+    </div>
+  );
+}

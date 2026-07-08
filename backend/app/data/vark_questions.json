@@ -1,0 +1,199 @@
+{
+  "version": "8.01",
+  "translator": "Fernanda Nakamoto",
+  "translatorInstitution": "São Camilo University Center",
+  "translatorYear": 2021,
+  "source": "VARK Learn Questionnaire (varklearn.com)",
+  "scoring": {
+    "type": "radio",
+    "optionsPerQuestion": 4,
+    "totalQuestions": 16,
+    "totalSlots": 64,
+    "modalityMapping": {
+      "V": "Visual",
+      "A": "Auditivo",
+      "R": "Leitura/Escrita",
+      "K": "Cinestésico"
+    }
+  },
+  "mapVarkLetter": [
+    "K","A","R","V",
+    "V","A","R","K",
+    "K","V","R","A",
+    "K","A","V","R",
+    "A","V","K","R",
+    "K","R","V","A",
+    "K","A","V","R",
+    "R","K","A","V",
+    "R","A","K","V",
+    "K","V","R","A",
+    "V","R","A","K",
+    "A","R","V","K",
+    "K","A","R","V",
+    "K","R","A","V",
+    "K","A","R","V",
+    "V","A","R","K"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "prompt": "Preciso encontrar o caminho para uma loja recomendada por um amigo. Eu:",
+      "options": [
+        {"value": "K", "text": "Descobriria a localização da loja em relação a um local que conheço."},
+        {"value": "A", "text": "Pediria ao meu amigo as informações sobre como chegar."},
+        {"value": "R", "text": "Anotaria as informações sobre as ruas que preciso para lembrar."},
+        {"value": "V", "text": "Usaria um mapa."}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Um website tem um vídeo mostrando como fazer um gráfico especial. Existe uma pessoa falando, algumas listas e palavras descrevendo o que fazer e alguns diagramas. Eu aprenderia melhor:",
+      "options": [
+        {"value": "V", "text": "Olhando os diagramas."},
+        {"value": "A", "text": "Ouvindo."},
+        {"value": "R", "text": "Lendo as palavras."},
+        {"value": "K", "text": "Assistindo as ações."}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Eu quero descobrir mais sobre um passeio que vou fazer. Eu:",
+      "options": [
+        {"value": "K", "text": "Examinaria detalhes sobre os pontos altos e atividades do passeio."},
+        {"value": "V", "text": "Usaria um mapa e veria onde são os lugares."},
+        {"value": "R", "text": "Leria sobre o passeio no roteiro."},
+        {"value": "A", "text": "Conversaria com a pessoa que planejou o passeio ou com outros que irão ao passeio."}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Ao escolher uma carreira ou área de estudo, são importantes para mim:",
+      "options": [
+        {"value": "K", "text": "Aplicação do meu conhecimento em situações reais."},
+        {"value": "A", "text": "Comunicação com outros através de discussão."},
+        {"value": "V", "text": "Trabalho com desenhos, mapas e gráficos."},
+        {"value": "R", "text": "Boa utilização de palavras na comunicação escrita."}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Quando eu estou aprendendo eu:",
+      "options": [
+        {"value": "A", "text": "Gosto de discutir as coisas."},
+        {"value": "V", "text": "Vejo padrões nas coisas."},
+        {"value": "K", "text": "Uso exemplos e aplicações."},
+        {"value": "R", "text": "Leio livros, artigos e folhetos."}
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Eu quero guardar mais dinheiro e decidir dentre uma variedade de opções. Eu:",
+      "options": [
+        {"value": "K", "text": "Consideraria exemplos de cada opção utilizando minhas informações financeiras."},
+        {"value": "R", "text": "Leria um catálogo impresso que descreve as opções em detalhe."},
+        {"value": "V", "text": "Usaria gráficos mostrando diferentes opções para diferentes períodos de tempo."},
+        {"value": "A", "text": "Conversaria com um especialista sobre as opções."}
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Eu quero aprender como jogar um novo jogo de tabuleiro ou um jogo de cartas. Eu:",
+      "options": [
+        {"value": "K", "text": "Assistiria outras pessoas jogando antes de entrar no jogo."},
+        {"value": "A", "text": "Ouviria alguém explicando e faria perguntas."},
+        {"value": "V", "text": "Usaria os diagramas que explicam os vários estágios, movimentos e estratégias no jogo."},
+        {"value": "R", "text": "Leria as instruções."}
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Eu tenho um problema com o meu coração. Eu preferiria que o médico:",
+      "options": [
+        {"value": "R", "text": "Me desse algo para ler para explicar o que está errado."},
+        {"value": "K", "text": "Utilizasse um modelo de plástico para mostrar o que está errado."},
+        {"value": "A", "text": "Descrevesse o que está errado."},
+        {"value": "V", "text": "Me mostrasse um diagrama sobre o que está errado."}
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Eu quero aprender a fazer algo novo no computador. Eu:",
+      "options": [
+        {"value": "R", "text": "Leria as instruções escritas que vieram com o programa."},
+        {"value": "A", "text": "Conversaria com pessoas que sabem sobre este programa."},
+        {"value": "K", "text": "Começaria utilizando-o e aprendendo por tentativa e erro."},
+        {"value": "V", "text": "Seguiria os diagramas de um livro."}
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Quando estou aprendendo na internet eu gosto de:",
+      "options": [
+        {"value": "K", "text": "Vídeos mostrando como fazer as coisas."},
+        {"value": "V", "text": "Desenhos interessantes e características visuais."},
+        {"value": "R", "text": "Descrições escritas interessantes, listas e explicações."},
+        {"value": "A", "text": "Canais de áudio em que eu posso ouvir podcasts ou entrevistas."}
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Eu quero aprender sobre um novo projeto. Eu pediria por:",
+      "options": [
+        {"value": "V", "text": "Diagramas que mostrem os estágios do projeto com gráficos de benefícios e custos."},
+        {"value": "R", "text": "Um relatório escrito descrevendo as características principais do projeto."},
+        {"value": "A", "text": "Uma oportunidade de discutir o projeto."},
+        {"value": "K", "text": "Exemplos de onde o projeto foi utilizado com sucesso."}
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Eu quero aprender como tirar fotografias melhores. Eu:",
+      "options": [
+        {"value": "A", "text": "Faria perguntas e conversaria sobre a câmera e suas características."},
+        {"value": "R", "text": "Utilizaria as instruções escritas sobre o que fazer."},
+        {"value": "V", "text": "Utilizaria diagramas que mostram a câmera e o que cada parte faz."},
+        {"value": "K", "text": "Utilizaria exemplos de fotografias boas e ruins mostrando como melhorá-las."}
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Eu prefiro um apresentador ou um professor que utilize:",
+      "options": [
+        {"value": "K", "text": "Demonstrações, modelos ou sessões práticas."},
+        {"value": "A", "text": "Pergunta e resposta, conversa, discussão em grupo ou convidados para falar."},
+        {"value": "R", "text": "Folhetos, livros ou material de leitura."},
+        {"value": "V", "text": "Diagramas, gráficos ou mapas."}
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Terminei uma competição ou prova e gostaria de ter um feedback. Gostaria que este feedback:",
+      "options": [
+        {"value": "K", "text": "Tivesse a utilização de exemplos do que eu fiz."},
+        {"value": "R", "text": "Tivesse a utilização de descrição escrita dos meus resultados."},
+        {"value": "A", "text": "Viesse de alguém que o discuta comigo."},
+        {"value": "V", "text": "Tivesse utilização de gráficos mostrando o que eu alcancei."}
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Eu quero saber mais sobre uma casa ou um apartamento. Antes de visitá-la(o) eu gostaria de:",
+      "options": [
+        {"value": "K", "text": "Assistir a um vídeo da propriedade."},
+        {"value": "A", "text": "Ter uma descrição impressa dos cômodos e suas características."},
+        {"value": "R", "text": "Ter uma discussão com o proprietário."},
+        {"value": "V", "text": "Uma planta mostrando os cômodos e um mapa da área."}
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Eu quero montar uma mesa de madeira que veio em partes. Eu aprenderia melhor a partir de:",
+      "options": [
+        {"value": "V", "text": "Diagramas mostrando cada estágio da montagem."},
+        {"value": "A", "text": "Conselhos de alguém que já montou antes."},
+        {"value": "R", "text": "Instruções escritas que vieram com as partes da mesa."},
+        {"value": "K", "text": "Assistindo a um vídeo de uma pessoa montando uma mesa similar."}
+      ]
+    }
+  ]
+}

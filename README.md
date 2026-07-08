@@ -1,76 +1,142 @@
-# Vite + FastAPI Boilerplate
+# VARK — Questionário de Estilos de Aprendizagem
 
-Minimal monorepo deployed on Vercel via **Services**: a Vite + React frontend
-and a public FastAPI backend mounted at `/svc/api/*`.
+Aplicação web para aplicar o questionário VARK (Visual, Auditivo, Leitura/Escrita, Cinestésico) sem coleta de dados pessoais. Stack: **FastAPI** no backend (cálculo stateless) e **Vite + React 18 + Tailwind + React Router + Zustand + Zod + Recharts** no frontend.
 
-## Project structure
+## Funcionalidades
+
+- Questionário VARK completo (16 questões, tradução PT-BR Nakamoto 2021 v8.01)
+- Wizard de 4 blocos (sem etapa de dados pessoais)
+- Cálculo server-side (seguro contra manipulação), sem persistência
+- Resultado com gráfico de barras, perfil, e guia de estratégias personalizadas
+- Privacidade por padrão: nenhum dado pessoal é solicitado, calculado ou armazenado
+
+## Estrutura
 
 ```
 vark-project/
 ├── vercel.json
+├── README.md
 ├── backend/
 │   ├── main.py
-│   └── pyproject.toml
+│   ├── pyproject.toml
+│   ├── .env.example
+│   ├── .python-version
+│   ├── pytest.ini
+│   ├── app/
+│   │   ├── config.py
+│   │   ├── data/vark_questions.json
+│   │   ├── schemas/{questions,result,score}.py
+│   │   ├── services/{scoring,learning_guide}.py
+│   │   └── routers/{questions,score,health}.py
+│   └── tests/
 └── frontend/
-    ├── index.html
     ├── package.json
     ├── vite.config.js
+    ├── tailwind.config.js
+    ├── postcss.config.js
+    ├── index.html
+    ├── .env.example
     └── src/
         ├── main.jsx
-        ├── App.jsx
-        └── index.css
+        ├── router.jsx
+        ├── lib/{api,utils}.js
+        ├── schemas/quiz.js
+        ├── store/quiz.js
+        ├── hooks/useQuiz.js
+        ├── components/
+        │   ├── ui/{Button,Input,Card,RadioGroup,Checkbox,Progress,Alert}.jsx
+        │   ├── layout/{AppShell,Header,Footer}.jsx
+        │   ├── wizard/{WizardProgress,QuestionsStep,QuestionCard}.jsx
+        │   └── result/{ProfileCard,ScoresChart,LearningGuide,ActionButtons}.jsx
+        └── pages/{Home,Sobre,Quiz,ResultView,NotFound}Page.jsx
 ```
 
-## Endpoints
+## API
 
-- `GET /` — React app
-- `GET /svc/api/status` — FastAPI health/info JSON
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| `GET` | `/svc/api/status` | Health check com timestamp |
+| `GET` | `/svc/api/healthz` | Liveness simples |
+| `GET` | `/svc/api/questions` | Questionário canônico (16 questões + `mapVarkLetter`) |
+| `POST` | `/svc/api/score` | Recebe 16 respostas e devolve o `ResultPayload` calculado (stateless) |
 
-## Run locally
+Documentação interativa: `GET /docs` (Swagger UI) e `GET /redoc`.
 
-Requires **Vercel CLI** (`npm i -g vercel`), **Node 18+**, and **Python 3.12+**.
+## Rodar localmente
+
+Requisitos: **Python 3.12+**, **Node 18+**.
+
+### Backend
 
 ```bash
-cd frontend && npm install
-cd ../backend && pip install -e .
-cd .. && vercel dev
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+uvicorn main:app --reload --port 8000
 ```
 
-Open <http://localhost:3000> and click **Call /svc/api/status**.
+Endpoints disponíveis em <http://localhost:8000/svc/api/status>.
 
-### Run services individually
+### Frontend
 
-Frontend only (Vite proxies `/svc/api/*` to `http://localhost:8000`,
-matching the production rewrite):
+Em outro terminal:
 
 ```bash
-cd frontend && npm install && npm run dev
+cd frontend
+npm install
+npm run dev
 ```
 
-Backend only (start this in a second terminal before clicking the button):
+App em <http://localhost:5173>. O Vite faz proxy de `/svc/api/*` para `http://localhost:8000` automaticamente (ver `vite.config.js`).
+
+### Testes
+
+Backend:
 
 ```bash
-cd backend && pip install .
-python -m uvicorn main:app --reload --port 8000
+cd backend
+.venv/bin/pytest
 ```
 
-Curl the backend directly:
+19 testes cobrindo scoring, validação de payload e cálculo stateless.
 
-```bash
-curl http://localhost:8000/svc/api/status
+## Variáveis de ambiente
+
+### Backend (`backend/.env`)
+
+```ini
+APP_NAME=VARK Backend
+APP_VERSION=0.1.0
+ENVIRONMENT=development
+DEBUG=true
+CORS_ORIGINS=["http://localhost:5173","http://localhost:3000"]
+QUESTIONS_FILE=./app/data/vark_questions.json
 ```
 
-## Deploy
+### Frontend (`frontend/.env.local`)
+
+```ini
+VITE_BACKEND_URL=/svc/api
+VITE_APP_NAME=VARK
+```
+
+## Deploy (Vercel)
+
+O `vercel.json` define dois Services:
+
+- `/svc/api/*` → FastAPI backend
+- `/(.*)` → frontend Vite/React
 
 ```bash
 vercel --prod
 ```
 
-On first deploy, set the project framework to **Services** if Vercel prompts
-for it.
+## Algoritmo de scoring
 
-## Configuration
+Cada questão vale 1 ponto na modalidade que o usuário escolheu (radio button). A pontuação final é `ScoreBreakdown = {V, A, R, K}` (cada uma entre 0 e 16). O perfil é formado pelas modalidades empatadas na maior pontuação. Veja [`app/services/scoring.py`](backend/app/services/scoring.py) e o questionário canônico em [`app/data/vark_questions.json`](backend/app/data/vark_questions.json).
 
-- `VITE_BACKEND_URL` — frontend env var pointing to the backend. Defaults to
-  `/svc/api`, which works under the Vercel rewrite. Override it to hit a
-  different FastAPI host during local dev.
+## Referências
+
+- Fleming, N. D. — *VARK: a guide to learning styles* (vark-learn.com)
+- Nakamoto, F. K. (2021) — Tradução e adaptação PT-BR, Centro Universitário São Camilo (versão 8.01)
