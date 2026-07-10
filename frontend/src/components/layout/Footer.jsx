@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200/60 bg-white/40">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="flex flex-row items-start justify-between gap-4 text-sm text-slate-500 sm:items-center">
+        <div className="flex flex-col items-start gap-2 text-sm text-slate-500">
           <div className="min-w-0">
             <p className="text-xs">
               Projeto criado por{" "}
