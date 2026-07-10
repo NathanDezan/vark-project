@@ -25,7 +25,7 @@ export default function WizardProgress({ step = 0 }) {
             {idx > 0 && (
               <div
                 className={cn(
-                  "mt-[15px] h-0.5 rounded-full transition sm:mt-[17px]",
+                  "mt-[13px] h-0.5 rounded-full transition sm:mt-[15px] md:mt-[17px]",
                   connectorDone ? "bg-emerald-500" : "bg-slate-200",
                 )}
                 aria-hidden="true"
@@ -34,7 +34,7 @@ export default function WizardProgress({ step = 0 }) {
             <div className="flex flex-col items-center">
               <div
                 className={cn(
-                  "grid h-8 w-8 place-items-center rounded-full border-2 text-xs font-semibold transition sm:h-9 sm:w-9",
+                  "grid h-7 w-7 place-items-center rounded-full border-2 text-[11px] font-semibold transition sm:h-8 sm:w-8 sm:text-xs md:h-9 md:w-9",
                   isDone && "border-emerald-500 bg-emerald-500 text-white",
                   isCurrent && "border-indigo-600 bg-indigo-600 text-white shadow-soft",
                   !isDone && !isCurrent && "border-slate-200 bg-white text-slate-400",

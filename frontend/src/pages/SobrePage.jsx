@@ -3,7 +3,7 @@ import { Card } from "../components/ui/Card.jsx";
 
 export default function SobrePage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <header>
         <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">Sobre o VARK</h1>
         <p className="mt-2 max-w-3xl text-base text-slate-600">

@@ -38,7 +38,7 @@ export default function HomePage() {
     <div className="space-y-12">
       <section className="grid items-center gap-8 lg:grid-cols-2">
         <div>
-          <h1 className="font-display text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+          <h1 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
             Descubra como você <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">aprende melhor</span>
           </h1>
           <p className="mt-4 max-w-xl text-base text-slate-600 sm:text-lg">
@@ -59,19 +59,18 @@ export default function HomePage() {
             <Clock className="h-4 w-4" /> Leva cerca de 5 minutos · 16 questões
           </div>
         </div>
-        <div className="relative">
-          <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-indigo-200 via-violet-200 to-pink-200 opacity-60 blur-2xl" />
-          <div className="grid grid-cols-2 gap-3">
+        <div className="relative overflow-hidden">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {modalities.map((m) => (
-              <Card key={m.code} className="flex flex-col items-start gap-3 hover:scale-[1.02]">
+              <Card key={m.code} className="flex flex-col items-start gap-2 p-3 sm:gap-3 sm:p-4 hover:scale-[1.02]">
                 <span
-                  className={`grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br ${m.color} text-white shadow-soft`}
+                  className={`grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br ${m.color} text-white shadow-soft sm:h-10 sm:w-10`}
                 >
-                  <m.icon className="h-5 w-5" />
+                  <m.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-slate-900">{m.name}</p>
-                  <p className="mt-1 text-xs text-slate-600">{m.description}</p>
+                  <p className="font-display text-sm font-bold text-slate-900 sm:text-base">{m.name}</p>
+                  <p className="mt-1 text-[11px] leading-snug text-slate-600 sm:text-xs">{m.description}</p>
                 </div>
               </Card>
             ))}
