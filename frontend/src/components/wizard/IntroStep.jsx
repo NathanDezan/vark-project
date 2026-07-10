@@ -55,7 +55,7 @@ export default function IntroStep({ onNext }) {
         ))}
       </ul>
 
-      <div className="flex items-center justify-end border-t border-slate-200 pt-4">
+      <div className="flex items-center justify-center border-t border-slate-200 pt-4 sm:justify-end">
         <Button onClick={onNext}>
           Começar questionário <ArrowRight className="h-4 w-4" />
         </Button>

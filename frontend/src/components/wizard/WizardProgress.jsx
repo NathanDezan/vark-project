@@ -14,7 +14,7 @@ export default function WizardProgress({ step = 0 }) {
   const displayId = step + 1;
 
   return (
-    <div className="grid grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto] items-start gap-x-1 sm:gap-x-2">
+    <div className="grid grid-cols-[auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto] items-start gap-x-0.5 sm:gap-x-2">
       {STEPS.map((s, idx) => {
         const isDone = displayId > s.id;
         const isCurrent = displayId === s.id;
@@ -25,7 +25,7 @@ export default function WizardProgress({ step = 0 }) {
             {idx > 0 && (
               <div
                 className={cn(
-                  "mt-[13px] h-0.5 rounded-full transition sm:mt-[15px] md:mt-[17px]",
+                  "mt-[11px] h-0.5 rounded-full transition sm:mt-[15px] md:mt-[17px]",
                   connectorDone ? "bg-emerald-500" : "bg-slate-200",
                 )}
               />
@@ -33,7 +33,7 @@ export default function WizardProgress({ step = 0 }) {
             <div className="flex flex-col items-center">
               <div
                 className={cn(
-                  "grid h-7 w-7 place-items-center rounded-full border-2 text-[11px] font-semibold transition sm:h-8 sm:w-8 sm:text-xs md:h-9 md:w-9",
+                  "grid h-6 w-6 place-items-center rounded-full border-2 text-[10px] font-semibold transition sm:h-8 sm:w-8 sm:text-xs md:h-9 md:w-9",
                   isDone && "border-emerald-500 bg-emerald-500 text-white",
                   isCurrent && "border-indigo-600 bg-indigo-600 text-white shadow-soft",
                   !isDone && !isCurrent && "border-slate-200 bg-white text-slate-400",
@@ -43,7 +43,7 @@ export default function WizardProgress({ step = 0 }) {
               </div>
               <span
                 className={cn(
-                  "mt-1.5 hidden text-[11px] font-medium sm:block",
+                  "mt-1 block w-14 text-center text-[10px] font-medium leading-tight sm:mt-1.5 sm:w-auto sm:text-xs",
                   isCurrent
                     ? "text-indigo-700"
                     : isDone
