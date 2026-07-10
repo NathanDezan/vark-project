@@ -2,9 +2,9 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200/60 bg-white/40">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] items-start gap-4 text-[11px] leading-tight text-slate-500 sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-sm">
+        <div className="flex flex-row items-start justify-between gap-4 text-sm text-slate-500 sm:items-center">
           <div className="min-w-0">
-            <p>
+            <p className="text-xs">
               Projeto criado por{" "}
               <a
                 href="https://nathandezan.github.io/src/templates/pt-br/home.html"
@@ -26,7 +26,7 @@ export default function Footer() {
               .
             </p>
           </div>
-          <p className="justify-self-end text-right">Construído com React, Vite, FastAPI e ❤️</p>
+          <p className="text-xs">Construído com React, Vite, FastAPI e ❤️</p>
         </div>
       </div>
     </footer>
