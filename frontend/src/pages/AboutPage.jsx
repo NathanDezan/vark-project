@@ -1,7 +1,7 @@
 import { BookOpen, ShieldCheck } from "lucide-react";
 import { Card } from "../components/ui/Card.jsx";
 
-export default function SobrePage() {
+export default function AboutPage() {
   return (
     <div className="space-y-6 sm:space-y-8">
       <header>

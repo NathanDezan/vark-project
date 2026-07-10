@@ -51,7 +51,7 @@ export default function HomePage() {
             <Link to="/quiz" className="btn-primary">
               Começar agora <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/sobre" className="btn-secondary">
+            <Link to="/about" className="btn-secondary">
               Entenda o VARK
             </Link>
           </div>

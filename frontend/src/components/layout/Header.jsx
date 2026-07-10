@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 const navItems = [
   { to: "/", label: "Início" },
   { to: "/quiz", label: "Questionário" },
-  { to: "/sobre", label: "Sobre" },
+  { to: "/about", label: "Sobre" },
 ];
 
 export default function Header() {
