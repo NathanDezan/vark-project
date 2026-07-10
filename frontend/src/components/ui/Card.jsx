@@ -1,8 +1,8 @@
 import { cn } from "../../lib/utils.js";
 
-export function Card({ className, children, ...props }) {
+export function Card({ className, children, interactive = false, ...props }) {
   return (
-    <div className={cn("card", className)} {...props}>
+    <div className={cn("card", interactive && "card-interactive", className)} {...props}>
       {children}
     </div>
   );

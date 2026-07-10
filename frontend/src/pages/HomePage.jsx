@@ -62,7 +62,11 @@ export default function HomePage() {
         <div className="relative overflow-visible p-2 sm:p-3">
           <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {modalities.map((m) => (
-              <Card key={m.code} className="flex flex-col items-start gap-2 p-3 sm:gap-3 sm:p-4 hover:scale-[1.02]">
+              <Card
+                key={m.code}
+                interactive
+                className="flex flex-col items-start gap-2 p-3 sm:gap-3 sm:p-4 hover:scale-[1.02]"
+              >
                 <span
                   className={`grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br ${m.color} text-white shadow-soft sm:h-10 sm:w-10`}
                 >
@@ -88,21 +92,21 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <Card>
+          <Card interactive>
             <Brain className="h-6 w-6 text-indigo-600" />
             <h3 className="mt-3 font-display text-lg font-bold">Estude com foco</h3>
             <p className="mt-1 text-sm text-slate-600">
               Descubra quais técnicas de estudo combinam com a sua forma natural de processar informação.
             </p>
           </Card>
-          <Card>
+          <Card interactive>
             <Combine className="h-6 w-6 text-violet-600" />
             <h3 className="mt-3 font-display text-lg font-bold">Multiplique recursos</h3>
             <p className="mt-1 text-sm text-slate-600">
               Se você é multimodal, combine mapas mentais, áudio, textos e prática para um aprendizado completo.
             </p>
           </Card>
-          <Card>
+          <Card interactive>
             <BookOpen className="h-6 w-6 text-pink-600" />
             <h3 className="mt-3 font-display text-lg font-bold">Resultados em minutos</h3>
             <p className="mt-1 text-sm text-slate-600">
