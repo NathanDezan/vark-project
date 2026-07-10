@@ -1,0 +1,36 @@
+# VCS and local metadata
+.git/
+.vscode/
+.pytest_cache/
+
+# Python caches and environments
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+backend/.venv/
+
+# Node installs and build output
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+frontend/.vite/
+
+# Test and coverage artifacts
+backend/tests/
+backend/.pytest_cache/
+.coverage
+backend/.coverage
+*.coverage
+
+# Local-only files
+.env
+.env.*.local
+.DS_Store
+reference/
+*.egg-info/
+Dockerfile
+backend/Dockerfile
+docker-compose.yml
