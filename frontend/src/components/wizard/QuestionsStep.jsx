@@ -42,8 +42,12 @@ export default function QuestionsStep({
       <Progress value={progress} max={100} label="Progresso geral" />
 
       <div className="space-y-4">
-        {blockQuestions.map((q) => (
-          <QuestionCard key={q.id} question={q} />
+        {blockQuestions.map((q, index) => (
+          <QuestionCard
+            key={q.id}
+            question={q}
+            displayNumber={(step - 1) * 4 + index + 1}
+          />
         ))}
       </div>
 

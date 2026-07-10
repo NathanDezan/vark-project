@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { api } from "../lib/api.js";
+import { ensureQuizShuffleSeed, shuffleQuiz } from "../lib/quizShuffle.js";
 import { useQuizStore } from "../store/quiz.js";
 
 function uuid() {
@@ -33,26 +34,27 @@ export function useQuiz() {
   useEffect(() => {
     if (quiz) return;
     setLoadingQuiz(true);
+    setSubmitError(null);
+    const shuffleSeed = ensureQuizShuffleSeed();
     api
       .getQuestions()
-      .then((data) => setQuiz(data))
+      .then((data) => setQuiz(shuffleQuiz(data, shuffleSeed)))
       .catch((err) => setSubmitError(err.message))
       .finally(() => setLoadingQuiz(false));
   }, [quiz, setQuiz, setLoadingQuiz, setSubmitError]);
 
   const totalAnswered = Object.keys(answers).length;
-  const totalQuestions = quiz?.questions?.length ?? 16;
+  const orderedQuestions = quiz?.questions ?? [];
+  const totalQuestions = orderedQuestions.length || 16;
 
   const BLOCK_SIZE = 4;
   const TOTAL_BLOCKS = 4;
   const PERCENT_PER_BLOCK = 100 / TOTAL_BLOCKS;
 
   function isBlockComplete(block) {
-    const start = (block - 1) * BLOCK_SIZE + 1;
-    for (let i = 0; i < BLOCK_SIZE; i++) {
-      if (!answers[start + i]) return false;
-    }
-    return true;
+    const start = (block - 1) * BLOCK_SIZE;
+    const blockQuestions = orderedQuestions.slice(start, start + BLOCK_SIZE);
+    return blockQuestions.length === BLOCK_SIZE && blockQuestions.every((q) => Boolean(answers[q.id]));
   }
 
   let blocksComplete = 0;
@@ -60,16 +62,15 @@ export function useQuiz() {
     if (isBlockComplete(b)) blocksComplete++;
   }
 
-  let answeredInCurrentBlock = 0;
-  let currentBlockPartialFraction = 0;
-  if (step >= 1 && step <= TOTAL_BLOCKS) {
-    const start = (step - 1) * BLOCK_SIZE + 1;
-    for (let i = 0; i < BLOCK_SIZE; i++) {
-      if (answers[start + i]) answeredInCurrentBlock++;
-    }
-    const fraction = answeredInCurrentBlock / BLOCK_SIZE;
-    currentBlockPartialFraction = fraction === 1 ? 0 : fraction;
-  }
+  const currentBlockQuestions =
+    step >= 1 && step <= TOTAL_BLOCKS
+      ? orderedQuestions.slice((step - 1) * BLOCK_SIZE, step * BLOCK_SIZE)
+      : [];
+  const answeredInCurrentBlock = currentBlockQuestions.filter((q) => Boolean(answers[q.id])).length;
+  const currentBlockPartialFraction =
+    currentBlockQuestions.length === BLOCK_SIZE && answeredInCurrentBlock < BLOCK_SIZE
+      ? answeredInCurrentBlock / BLOCK_SIZE
+      : 0;
 
   const progress =
     step === 0

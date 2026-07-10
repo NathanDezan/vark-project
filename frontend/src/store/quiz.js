@@ -1,5 +1,7 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { clearQuizShuffleSeed } from "../lib/quizShuffle.js";
+import { getSafeSessionStorage } from "../lib/storage.js";
 
 export const useQuizStore = create(
   persist(
@@ -32,16 +34,22 @@ export const useQuizStore = create(
       setCalculating: (v) => set({ isCalculating: v }),
       setSubmitError: (err) => set({ submitError: err }),
 
-      reset: () =>
+      reset: () => {
+        clearQuizShuffleSeed();
         set({
+          quiz: null,
           step: 0,
           answers: {},
           result: null,
           submitError: null,
-        }),
+          isLoadingQuiz: false,
+          isCalculating: false,
+        });
+      },
     }),
     {
       name: "vark-quiz-state",
+      storage: createJSONStorage(getSafeSessionStorage),
       partialize: (s) => ({ step: s.step, answers: s.answers }),
     },
   ),
