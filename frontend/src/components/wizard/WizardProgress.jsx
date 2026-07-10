@@ -28,7 +28,6 @@ export default function WizardProgress({ step = 0 }) {
                   "mt-[13px] h-0.5 rounded-full transition sm:mt-[15px] md:mt-[17px]",
                   connectorDone ? "bg-emerald-500" : "bg-slate-200",
                 )}
-                aria-hidden="true"
               />
             )}
             <div className="flex flex-col items-center">
