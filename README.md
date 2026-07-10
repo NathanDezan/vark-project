@@ -70,6 +70,13 @@ Requisitos: **Python 3.12+**, **Node 18+**.
 
 ```bash
 cd backend
+uv sync --extra dev
+uv run uvicorn main:app --reload --port 8000
+```
+
+If you prefer `venv` + `pip`:
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
@@ -96,10 +103,10 @@ Backend:
 
 ```bash
 cd backend
-.venv/bin/pytest
+uv run pytest
 ```
 
-19 testes cobrindo scoring, validação de payload e cálculo stateless.
+O `pytest.ini` falha o comando se a cobertura da API ficar abaixo de 80%.
 
 ## Variáveis de ambiente
 

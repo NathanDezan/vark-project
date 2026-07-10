@@ -33,6 +33,17 @@ async def test_score_success_all_visual(client: AsyncClient, valid_answers_all_v
 
 
 @pytest.mark.asyncio
+async def test_score_success_mixed_modalities(client: AsyncClient, valid_answers_mixed):
+    res = await client.post("/svc/api/score", json=_payload(valid_answers_mixed))
+    assert res.status_code == 200, res.text
+    body = res.json()
+    assert body["scores"] == {"V": 4, "A": 4, "R": 4, "K": 4}
+    assert body["profile"] == "Multimodal"
+    assert body["modalities"] == ["A", "K", "R", "V"]
+    assert [guide["code"] for guide in body["guide"]] == ["A", "K", "R", "V"]
+
+
+@pytest.mark.asyncio
 async def test_score_missing_answers_rejected(client: AsyncClient, valid_answers_all_v):
     res = await client.post(
         "/svc/api/score", json=_payload(valid_answers_all_v[:8])

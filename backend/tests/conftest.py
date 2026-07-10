@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import os
 from collections.abc import AsyncGenerator
+
+os.environ["DEBUG"] = "false"
 
 import pytest
 import pytest_asyncio
@@ -11,7 +14,7 @@ from main import app
 
 @pytest_asyncio.fixture
 async def client() -> AsyncGenerator[AsyncClient, None]:
-    transport = ASGITransport(app=app)
+    transport = ASGITransport(app=app, raise_app_exceptions=False)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac
 

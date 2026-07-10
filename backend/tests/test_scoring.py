@@ -2,8 +2,14 @@ from __future__ import annotations
 
 import pytest
 
-from app.schemas.questions import Modality
-from app.services.scoring import count_scores, learning_profile, load_quiz, score_quiz
+from app.schemas.result import ScoreBreakdown
+from app.services.scoring import (
+    count_scores,
+    learning_profile,
+    load_guides_for_modalities,
+    load_quiz,
+    score_quiz,
+)
 
 
 @pytest.fixture(scope="module")
@@ -57,25 +63,24 @@ def test_mixed_answers_counts_correctly(quiz):
     assert scores.K == 5
 
 
-def test_tie_detected_in_profile(quiz):
-    from app.schemas.result import ScoreBreakdown
-
+def test_tie_detected_in_profile():
     scores = ScoreBreakdown(V=4, A=4, R=4, K=4)
     profile, winners = learning_profile(scores)
     assert winners == ["A", "K", "R", "V"]
-    assert "Visual" in profile
-    assert "Auditivo" in profile
-    assert "Leitura/Escrita" in profile
-    assert "Cinestésico" in profile
+    assert profile == "Multimodal"
 
 
-def test_unique_winner(quiz):
-    from app.schemas.result import ScoreBreakdown
-
+def test_unique_winner():
     scores = ScoreBreakdown(V=2, A=8, R=3, K=3)
     profile, winners = learning_profile(scores)
     assert winners == ["A"]
     assert profile == "Auditivo"
+
+
+def test_load_guides_for_modalities_preserves_order():
+    guides = load_guides_for_modalities(["A", "V"])
+    assert [guide.code for guide in guides] == ["A", "V"]
+    assert [guide.name for guide in guides] == ["Auditivo", "Visual"]
 
 
 def test_score_quiz_returns_tuple(quiz):

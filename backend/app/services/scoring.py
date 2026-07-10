@@ -62,7 +62,12 @@ def learning_profile(scores: ScoreBreakdown) -> tuple[str, list[Modality]]:
     counts: dict[Modality, int] = {"V": scores.V, "A": scores.A, "R": scores.R, "K": scores.K}
     top = max(counts.values())
     winners = sorted([m for m, v in counts.items() if v == top])
-    profile = " | ".join(MODALITY_NAMES[m] for m in winners) if winners else "—"
+    if len(winners) > 1:
+        profile = "Multimodal"
+    elif winners:
+        profile = MODALITY_NAMES[winners[0]]
+    else:
+        profile = "—"
     return profile, winners
 
 
