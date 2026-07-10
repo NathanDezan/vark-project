@@ -59,7 +59,7 @@ export default function HomePage() {
             <Clock className="h-4 w-4" /> Leva cerca de 5 minutos · 16 questões
           </div>
         </div>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-visible p-2 sm:p-3">
           <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {modalities.map((m) => (
               <Card key={m.code} className="flex flex-col items-start gap-2 p-3 sm:gap-3 sm:p-4 hover:scale-[1.02]">

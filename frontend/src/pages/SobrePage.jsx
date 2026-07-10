@@ -8,7 +8,7 @@ export default function SobrePage() {
         <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">Sobre o VARK</h1>
         <p className="mt-2 max-w-3xl text-base text-slate-600">
           O VARK é um dos instrumentos mais utilizados no mundo para identificar preferências de
-          aprendizagem. Foi desenvolvido por Neil Fleming e colaboradores, e categoriza quatro
+          aprendizagem. Foi desenvolvido por Neil Fleming, e categoriza quatro
           modalidades principais.
         </p>
       </header>
