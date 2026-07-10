@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import { Card } from "../components/ui/Card.jsx";
 import ProfileCard from "../components/result/ProfileCard.jsx";
 import ScoresChart from "../components/result/ScoresChart.jsx";
@@ -10,9 +10,14 @@ import { formatDate } from "../lib/utils.js";
 
 export default function ResultView() {
   const result = useQuizStore((s) => s.result);
+  const reset = useQuizStore((s) => s.reset);
 
   if (!result?.id) {
     return <Navigate to="/quiz" replace />;
+  }
+
+  function handleRedo() {
+    reset();
   }
 
   return (
@@ -21,14 +26,10 @@ export default function ResultView() {
         <p className="text-xs text-slate-500">
           Submissão #{result.id.slice(0, 8)} · {formatDate(result.created_at)}
         </p>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <Link to="/quiz" className="btn-ghost">
-            <ArrowLeft className="h-4 w-4" /> Refazer
-          </Link>
-          <Link to="/sobre" className="btn-ghost">
-            Sobre o VARK <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+        <Link to="/quiz" replace onClick={handleRedo} className="btn-ghost w-fit">
+          <RefreshCw className="h-4 w-4" />
+          Refazer questionário
+        </Link>
       </div>
 
       <ProfileCard
@@ -49,7 +50,7 @@ export default function ResultView() {
 
       <LearningGuide modalities={result.modalities} guide={result.guide} />
 
-      <ActionButtons />
+      <ActionButtons result={result} />
     </div>
   );
 }

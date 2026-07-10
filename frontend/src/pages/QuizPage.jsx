@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../components/ui/Card.jsx";
 import { Alert } from "../components/ui/Alert.jsx";
@@ -23,6 +23,26 @@ export default function QuizPage() {
     calculate,
   } = useQuiz();
   const result = useQuizStore((s) => s.result);
+  const previousStepRef = useRef(step);
+
+  function handlePrevStep() {
+    prevStep();
+  }
+
+  function handleNextStep() {
+    nextStep();
+  }
+
+  useEffect(() => {
+    if (previousStepRef.current === step) return;
+    previousStepRef.current = step;
+
+    if (typeof window === "undefined") return;
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }, [step]);
 
   useEffect(() => {
     if (result?.id) {
@@ -69,15 +89,15 @@ export default function QuizPage() {
           totalAnswered={totalAnswered}
           totalQuestions={totalQuestions}
           progress={progress}
-          onPrev={prevStep}
-          onNext={nextStep}
+          onPrev={handlePrevStep}
+          onNext={handleNextStep}
           onCalculate={handleCalculate}
           isCalculating={isCalculating}
         />
       </Card>
 
       <p className="text-center text-xs text-slate-500">
-        Dica: você pode voltar e revisar qualquer resposta. Seu progresso é salvo automaticamente.
+        Dica: você pode voltar e revisar qualquer resposta. Seu progresso fica salvo enquanto esta aba estiver aberta.
       </p>
     </div>
   );

@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button.jsx";
 import { Progress } from "../ui/Progress.jsx";
 import QuestionCard from "./QuestionCard.jsx";
@@ -60,17 +60,10 @@ export default function QuestionsStep({
 
         {isLastBlock && (
           <Button onClick={onCalculate} disabled={!allAnswered || isCalculating}>
-            <Sparkles className="h-4 w-4" />
             {isCalculating ? "Calculando..." : "Calcular resultado"}
           </Button>
         )}
       </div>
-
-      {isLastBlock && !allAnswered && (
-        <p className="text-center text-xs text-amber-700">
-          Responda todas as 16 questões para liberar o resultado.
-        </p>
-      )}
     </div>
   );
 }

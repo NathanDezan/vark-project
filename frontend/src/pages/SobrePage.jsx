@@ -1,4 +1,4 @@
-import { ShieldCheck } from "lucide-react";
+import { BookOpen, ShieldCheck } from "lucide-react";
 import { Card } from "../components/ui/Card.jsx";
 
 export default function SobrePage() {
@@ -8,7 +8,7 @@ export default function SobrePage() {
         <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">Sobre o VARK</h1>
         <p className="mt-2 max-w-3xl text-base text-slate-600">
           O VARK é um dos instrumentos mais utilizados no mundo para identificar preferências de
-          aprendizagem. Foi desenvolvido por Neil Fleming, e categoriza quatro
+          aprendizagem. Foi desenvolvido por Neil Fleming e categoriza quatro
           modalidades principais.
         </p>
       </header>
@@ -43,18 +43,40 @@ export default function SobrePage() {
           <p className="mt-3 text-sm text-slate-700">
             Este questionário é totalmente anônimo. Nenhum dado pessoal é solicitado ou
             armazenado. O cálculo do perfil acontece on-demand e o resultado fica disponível
-            apenas na sua sessão atual — ao sair ou recarregar, ele é descartado.
+            apenas na sua sessão atual — ao fechar a aba ou janela, ele é descartado.
           </p>
         </Card>
       </section>
 
       <section>
         <Card>
-          <h2 className="font-display text-lg font-bold">Referências</h2>
+          <h2 className="flex items-center gap-2 font-display text-lg font-bold">
+            <BookOpen className="h-5 w-5 text-indigo-600" />
+            Referências
+          </h2>
           <ul className="mt-3 space-y-1 text-sm text-slate-700">
-            <li>Fleming, N. D. (2006). <em>Teaching and learning styles: VARK strategies</em>.</li>
-            <li>Nakamoto, F. K. (2021). Tradução e adaptação do VARK para PT-BR. Centro Universitário São Camilo.</li>
-            <li>Questionário original: <a className="text-indigo-600 underline" href="https://vark-learn.com" target="_blank" rel="noreferrer">vark-learn.com</a></li>
+            <li>
+              Fleming, N. D. (2006).{" "}
+              <a
+                className="text-inherit underline hover:underline"
+                href="http://203.158.6.88/ebooks/H158572.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <em>Teaching and learning styles: VARK strategies</em>
+              </a>
+              .
+            </li>
+            <li>
+              <a
+                className="text-inherit underline hover:underline"
+                href="https://vark-learn.com/home-portuguese/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                VARK Learn
+              </a>
+            </li>
           </ul>
         </Card>
       </section>
