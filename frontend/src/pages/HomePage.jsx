@@ -47,11 +47,11 @@ export default function HomePage() {
             <strong className="text-slate-800">Leitura/Escrita</strong> e <strong className="text-slate-800">Cinestésico</strong>. Receba
             um guia prático para estudar e revisar com mais eficiência.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link to="/quiz" className="btn-primary">
+          <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:gap-3">
+            <Link to="/quiz" className="btn-primary w-full px-3 py-2 text-xs sm:w-auto sm:px-5 sm:py-2.5 sm:text-sm">
               Começar agora <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/sobre" className="btn-secondary">
+            <Link to="/about" className="btn-secondary w-full px-3 py-2 text-xs sm:w-auto sm:px-5 sm:py-2.5 sm:text-sm">
               Entenda o VARK
             </Link>
           </div>

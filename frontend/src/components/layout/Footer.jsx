@@ -2,8 +2,8 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200/60 bg-white/40">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="flex flex-col items-start justify-between gap-4 text-sm text-slate-500 sm:flex-row sm:items-center">
-          <div>
+        <div className="flex flex-col items-center gap-2 text-center text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
+          <div className="min-w-0">
             <p className="text-xs">
               Projeto criado por{" "}
               <a

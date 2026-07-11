@@ -5,7 +5,7 @@ export function Progress({ value, max = 100, className, label }) {
   return (
     <div className={cn("w-full", className)}>
       {label && (
-        <div className="mb-1.5 flex items-center justify-between text-xs font-medium text-slate-600">
+        <div className="mb-1 flex items-center justify-between text-[11px] font-medium text-slate-600 sm:mb-1.5 sm:text-xs">
           <span>{label}</span>
           <span>{pct}%</span>
         </div>

@@ -22,11 +22,16 @@ export default function ResultView() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-slate-500">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 sm:flex sm:items-center sm:justify-between">
+        <p className="min-w-0 text-[11px] leading-tight text-slate-500 sm:text-xs">
           Submissão #{result.id.slice(0, 8)} · {formatDate(result.created_at)}
         </p>
-        <Link to="/quiz" replace onClick={handleRedo} className="btn-ghost w-fit">
+        <Link
+          to="/quiz"
+          replace
+          onClick={handleRedo}
+          className="btn-ghost shrink-0 whitespace-nowrap px-2.5 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-sm"
+        >
           <RefreshCw className="h-4 w-4" />
           Refazer questionário
         </Link>

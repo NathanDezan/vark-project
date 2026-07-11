@@ -76,13 +76,13 @@ export default function QuizPage() {
 
   return (
     <div className="space-y-6">
-      <Card>
-        <div className="mb-6">
+      <Card className="p-4 sm:p-6">
+        <div className="mb-4 sm:mb-6">
           <WizardProgress step={step} />
         </div>
       </Card>
 
-      <Card>
+      <Card className="p-4 sm:p-6">
         <QuestionsStep
           step={step}
           questions={quiz.questions}
