@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200/60 bg-white/40">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="flex flex-col items-start gap-2 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <div className="flex flex-col items-center gap-2 text-center text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
           <div className="min-w-0">
             <p className="text-xs">
               Projeto criado por{" "}
@@ -26,7 +26,7 @@ export default function Footer() {
               .
             </p>
           </div>
-          <p className="text-xs sm:text-right">Construído com React, Vite, FastAPI e ❤️</p>
+          <p className="text-xs">Construído com React, Vite, FastAPI e ❤️</p>
         </div>
       </div>
     </footer>
