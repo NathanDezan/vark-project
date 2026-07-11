@@ -1,13 +1,14 @@
 # VARK — Questionário de Estilos de Aprendizagem
 
-Aplicação web para aplicar o questionário VARK (Visual, Auditivo, Leitura/Escrita, Cinestésico) sem coleta de dados pessoais. Stack: **FastAPI** no backend (cálculo stateless) e **Vite + React 18 + Tailwind + React Router + Zustand + Zod + Recharts** no frontend.
+Aplicação web para aplicar o questionário VARK (Visual, Auditivo, Leitura/Escrita, Cinestésico) sem coleta de dados pessoais. Stack: **FastAPI** no backend (cálculo stateless) e **Vite + React 18 + Tailwind + React Router + Zustand + Zod + Recharts** no frontend. A interface é responsiva para mobile, tablet e desktop, e o resultado pode ser exportado em PDF.
 
 ## Funcionalidades
 
 - Questionário VARK completo (16 questões, tradução PT-BR Nakamoto 2021 v8.01)
 - Wizard de 4 blocos (sem etapa de dados pessoais)
 - Cálculo server-side (seguro contra manipulação), sem persistência
-- Resultado com gráfico de barras, perfil, e guia de estratégias personalizadas
+- Resultado com gráfico de barras, perfil, guia de estratégias personalizadas e exportação em PDF
+- Interface responsiva, com ajustes específicos para telas pequenas sem alterar o comportamento de tablet e desktop
 - Privacidade por padrão: nenhum dado pessoal é solicitado, calculado ou armazenado
 
 ## Estrutura
@@ -59,6 +60,7 @@ vark-project/
 | `GET` | `/svc/api/healthz` | Liveness simples |
 | `GET` | `/svc/api/questions` | Questionário canônico (16 questões + `mapVarkLetter`) |
 | `POST` | `/svc/api/score` | Recebe 16 respostas e devolve o `ResultPayload` calculado (stateless) |
+| `POST` | `/svc/api/result/pdf` | Recebe um `ResultPayload` e devolve o PDF do resultado |
 
 Documentação interativa: `GET /docs` (Swagger UI) e `GET /redoc`.
 
